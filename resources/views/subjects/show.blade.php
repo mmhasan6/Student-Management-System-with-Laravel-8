@@ -5,18 +5,18 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Courses
+                        <h4>Subjects
                         {{-- showing success messange --}}
                         @if (session('status'))
                             <h5 class="alert alert-success">{{ session('status') }}</h5>
                         @endif
-                        <button type="button" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#Add_new_subjects_model"><i class="fas fa-plus"></i> New Course</button>
+                        <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#Add_new_subjects_model"><i class="fas fa-plus"></i> Add Subjects</button>
                         </h4>
                     </div>
                     <div class="card-body">
 
                       {{-- for small table table-sm --}}
-                <table id="datatable" style="text-align: center" class="table table-bordered table-hover table-striped table-sm">
+                <table id="datatable" style="text-align: center" class="table table-bordered table-hover table-striped table-responsive-xl table-sm">
                   <thead >
                   <tr>
                     <th>#</th>
@@ -28,19 +28,19 @@
                   </thead>
                   <tbody>
                   <tr>
-                  @foreach ($subjects as $key=>$data)
+                     @foreach ($subjects as $key=>$data)
                     <tr>
                       <td>{{ $key+1 }}</td>
                       <td>{{ $data->course_short_name }}</td>
-                        <td>{{ $data->Subject1 }}</td> 
-                        <td>{{ $data->Subject2 }}</td> 
+                        <td>{{ $data->Subject1 }}</td>
+                        <td>{{ $data->Subject2 }}</td>
                         <td>{{ $data->Subject3 }}</td>
                       <td>{{ $data->created_at }}</td>
                       <td>
-                        <a class="text-danger" href="{{ '/admin/edit_course/'.$data->id }}"><i class="fas fa-edit"></i></a>
-                        <a class="text-danger float-right" href="{{ url('/admin/delete_course_data/'.$data->id) }}" onclick="return confirm('are you sure to delete!')"><i class="fas fa-trash"></i></a>
+                        <a class="text-danger" href="{{ '/admin/edit_subjects/'.$data->id }}"><i class="fas fa-edit"></i></a>
+                        <a class="text-danger float-right" href="{{ url('/admin/delete_subjects_data/'.$data->id) }}" onclick="return confirm('are you sure to delete!')"><i class="fas fa-trash"></i></a>
                       </td>
-                    </tr>  
+                    </tr>
                     @endforeach
                   </tr>
                   </tbody>
@@ -63,23 +63,22 @@
     <div class="modal fade" id="Add_new_subjects_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-                      
-          <form class="needs-validation" action="{{ route('admin.add_new_course') }}" method="post" novalidate>
+          <form class="needs-validation" action="{{ route('admin.add_new_subjects') }}" method="post" novalidate>
             @csrf
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Create New Course</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Create New Subjects</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>      
+          </div>
           <div class="modal-body">
-            <div class="card-body"> 
+            <div class="card-body">
                 <div class="form-group">
                   <label>Course Short Name</label>
                   <select class="form-control select2" style="width: 100%;" name="course_short_name_id">
                     @foreach ($course_for_add_new_subjects as $item)
-                        <option value="{{ $item->id }}">{{ $item->course_short_name }}</option>
-                    @endforeach  
+                        <option value="{{ $item->id }}" >{{ $item->course_short_name }}</option>
+                    @endforeach
                   </select>
                   <span class="text-danger">@error('course_short_name_id'){{ $message }}@enderror</span>
                 </div>
@@ -88,29 +87,27 @@
                   <select class="form-control select2" style="width: 100%;" name="course_full_name_id">
                      @foreach ($course_for_add_new_subjects as $item)
                         <option value="{{ $item->id }}">{{ $item->course_full_name }}</option>
-                    @endforeach 
+                    @endforeach
                   </select>
                   <span class="text-danger">@error('course_full_name_id'){{ $message }}@enderror</span>
-                </div>                                          
+                </div>
               <div class="form-group">
                   <label>Subject1</label>
                   <input type="text" class="form-control" placeholder="Short Name " name="Subject1" required>
-                  <span class="text-danger">@error('Subject1'){{ $message }}@enderror</span>   
+                  <span class="text-danger">@error('Subject1'){{ $message }}@enderror</span>
               </div>
               <div class="form-group">
                   <label>Subject2</label>
                   <input type="text" class="form-control" placeholder="Short Name " name="Subject2" required>
-                  <span class="text-danger">@error('Subject2'){{ $message }}@enderror</span>   
+                  <span class="text-danger">@error('Subject2'){{ $message }}@enderror</span>
               </div>
               <div class="form-group">
                   <label>Subject3</label>
-                  <input type="text" class="form-control" placeholder="Short Name " name="Subject2" required>
-                    <div class="invalid-feedback">
-                    <span class="text-danger">@error('Subject2'){{ $message }}@enderror</span>
-                  </div>    
+                  <input type="text" class="form-control" placeholder="Short Name " name="Subject3" required>
+                  <span class="text-danger">@error('Subject3'){{ $message }}@enderror</span>
               </div>
             </div>
-          </div>     
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Submit</button>

@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\Models\Student;
+=======
+use App\Models\Course;
+use App\Models\Student;
+use App\Models\Subject;
+>>>>>>> 184f23f (Course & subject relationonal db create, edit, Update)
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -20,6 +26,10 @@ class StudentsController extends Controller
     public function create()
     {
         return view('students.create');
+        $course_for_registration = Course::all();
+        $subjects_for_registration =Subject::all();
+
+        return view('students.create', compact('course_for_registration'));
     }
     //Storing new admin users data to DB
     public function store(Request $request)
@@ -52,7 +62,6 @@ class StudentsController extends Controller
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
             $file->move('uploads/students/',$filename);
-            
             $students->profile_picture = $filename;
         }
         $students->save();
@@ -104,7 +113,6 @@ class StudentsController extends Controller
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
             $file->move('uploads/students/',$filename);
-            
             $students->profile_picture = $filename;
         }
         $students->save();

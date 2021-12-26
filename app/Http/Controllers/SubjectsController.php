@@ -26,7 +26,10 @@ class SubjectsController extends Controller
   {
     $request->validate([
       'course_short_name_id' => 'required',
-      'course_full_name_id' => 'required|same:course_short_name'
+      'course_full_name_id' => 'required|same:course_short_name_id',
+      'Subject1' => 'required',
+      'Subject2' => 'required',
+      'Subject3' => 'required'
     ]);
 
     $subjects = new Subject();

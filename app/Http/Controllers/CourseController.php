@@ -20,19 +20,16 @@ class CourseController extends Controller
             'course_short_name' => 'required|min:2|max:20',
             'course_full_name' => 'required'
         ]);
-        
         $courses = new Course();
 
-        $courses -> course_short_name = $request->course_short_name; 
+        $courses -> course_short_name = $request->course_short_name;
         $courses -> course_full_name = $request->course_full_name;
         $courses -> created_at = now();
 
         $courses->save();
         return redirect('admin/courses')->with('status', 'Admin user added successfully');
-       // return redirect()->back()->with('status', 'Admin user added successfully');
     }
 
-    
      //showing Editing Admin form with db data
     public function course_edit($id)
     {
@@ -62,7 +59,6 @@ class CourseController extends Controller
     public function destroy($id)
     {
         $teachers = Course::find($id);
-        
         $teachers -> delete();
         return redirect('admin/courses')->with('status', 'Course Deleted successfully');
     }
