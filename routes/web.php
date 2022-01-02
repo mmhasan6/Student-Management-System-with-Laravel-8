@@ -86,7 +86,11 @@ Route::middleware(['auth:admin'])->group(function(){
 
 // subjects
 		Route::get('subjects', [SubjectsController::class, 'show'])->name('subjects');
+<<<<<<< HEAD
 		Route::post('add_new_subjects', [SubjectsController::class, 'create_csubjects'])->name('add_new_subjects');
+=======
+		Route::post('add_new_subjects', [SubjectsController::class, 'create_subjects'])->name('add_new_subjects');
+>>>>>>> 184f23f (Course & subject relationonal db create, edit, Update)
 		Route::get('edit_subjects/{id}', [SubjectsController::class, 'subjects_edit']);
 		Route::put('update_subjects/{id}',[SubjectsController::class, 'subjects_update']);
 		Route::get('delete_subjects_data/{id}',[SubjectsController::class, 'destroy']);

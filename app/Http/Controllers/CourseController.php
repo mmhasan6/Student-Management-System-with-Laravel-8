@@ -25,7 +25,11 @@ class CourseController extends Controller
 
         $courses -> course_short_name = $request->course_short_name; 
         $courses -> course_full_name = $request->course_full_name;
+<<<<<<< HEAD
         $courses -> created_at = now();
+=======
+       // $courses -> created_at = now();
+>>>>>>> 184f23f (Course & subject relationonal db create, edit, Update)
 
         $courses->save();
         return redirect('admin/courses')->with('status', 'Admin user added successfully');

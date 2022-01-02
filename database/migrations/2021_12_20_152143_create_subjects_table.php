@@ -15,7 +15,11 @@ class CreateSubjectsTable extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->foreignId('course_id')->constrained('courses')->onDelete('cascade')->onUpdate('cascade');
+=======
+            $table->foreignId('course_id')->constrained('courses');
+>>>>>>> 184f23f (Course & subject relationonal db create, edit, Update)
             $table->string('Subject1');
             $table->string('Subject2');
             $table->string('Subject3');

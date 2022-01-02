@@ -5,10 +5,17 @@
 <section class="content">
     <div class="container-fluid">
     <div class="card card-default">
+<<<<<<< HEAD
        <form action="{{ route('admin.add-new-teachers') }}" method="post" enctype="multipart/form-data">
         @csrf
            <div class="card-header">
         <h1 class="card-title">Register New teacher</h1>
+=======
+       <form action="{{ route('admin.add-new-student') }}" method="post" enctype="multipart/form-data">
+        @csrf
+           <div class="card-header">
+        <h1 class="card-title">Register New Student</h1>
+>>>>>>> 184f23f (Course & subject relationonal db create, edit, Update)
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
             <i class="fas fa-minus"></i>
@@ -37,7 +44,11 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
+<<<<<<< HEAD
                         <label for="exampleInput">Teacher Id</label>
+=======
+                        <label for="exampleInput">Student Id</label>
+>>>>>>> 184f23f (Course & subject relationonal db create, edit, Update)
                         <input type="text" name="roll_id" class="form-control"  placeholder="Student id" value="{{ old('roll_id') }}">
                         <span class="text-danger">@error('roll_id'){{ $message }}@enderror</span></label>
                     </div>
@@ -72,9 +83,26 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
+<<<<<<< HEAD
                         <label class="" for="exampleInput" style="margin-right:10%; ">Gender</label>
                         <label ><input type="radio" name="gender" value="male"> Male</label>
                         <label ><input type="radio" name="gender" value="female"> Female</label>
+=======
+                        <label>Select Course</label>
+                        <select class="form-control input-lg dynamic" style="width: 100%;" name="course_id">
+                          @foreach ($course_for_registration as $item)
+                              <option value="{{ $item->id }}" >{{ $item->course_short_name }}-{{ $item->course_full_name }}</option>
+                          @endforeach
+                        </select>
+                        <span class="text-danger">@error('course_short_name_id'){{ $message }}@enderror</span>
+                      </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="" for="exampleInput" style="margin-right:10%; ">Gender</label>
+                        <label ><input type="radio" name="gender" value="male" {{ 'male' == old('gender') ? 'checked' : ''}}> Male</label>
+                        <label ><input type="radio" name="gender" value="female" {{ 'female' == old('gender') ? 'checked' : ''}}> Female</label>
+>>>>>>> 184f23f (Course & subject relationonal db create, edit, Update)
                         <span class="text-danger">@error('gender'){{ $message }}@enderror</span></label>
                     </div>
                 </div>
@@ -82,14 +110,27 @@
                     <div class="form-group">
                         <label for="exampleInput">Profile Picture</label>
                         <input type="file" name="profile_picture" id="" value="{{ old('profile_picture') }}">
+<<<<<<< HEAD
                     </div>
                 </div>
+=======
+                        <span class="text-danger">@error('profile_picture'){{ $message }}@enderror</span></label>
+                    </div>
+                </div>
+              
+                
+                
+>>>>>>> 184f23f (Course & subject relationonal db create, edit, Update)
 
             </div> 
         </div>
         {{-- End card body --}}
         <div class="card-footer">
+<<<<<<< HEAD
             <button type="submit" class="btn btn-primary floar-right">SAVE Teacher</button>
+=======
+            <button type="submit" class="btn btn-primary btn-sm floar-right">SAVE STUDENT</button>
+>>>>>>> 184f23f (Course & subject relationonal db create, edit, Update)
         </div> 
     </form> 
     </div>          

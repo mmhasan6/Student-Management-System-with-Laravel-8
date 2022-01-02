@@ -26,7 +26,14 @@ class SubjectsController extends Controller
   {
     $request->validate([
       'course_short_name_id' => 'required',
+<<<<<<< HEAD
       'course_full_name_id' => 'required|same:course_short_name'
+=======
+      'course_full_name_id' => 'required|same:course_short_name_id',
+      'Subject1' => 'required',
+      'Subject2' => 'required',
+      'Subject3' => 'required'
+>>>>>>> 184f23f (Course & subject relationonal db create, edit, Update)
     ]);
 
     $subjects = new Subject();
