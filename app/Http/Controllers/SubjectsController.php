@@ -16,6 +16,7 @@ class SubjectsController extends Controller
     ->join('subjects', 'courses.id', '=', 'subjects.course_id')
     ->select('subjects.*', 'courses.*')
     ->get();
+    dd($subjects);
     $course_for_add_new_subjects = Course::all();
 
     return view('subjects.show', compact('subjects', 'course_for_add_new_subjects'));

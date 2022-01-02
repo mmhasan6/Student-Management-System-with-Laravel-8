@@ -179,21 +179,31 @@
             </a>
           </li>
           
-          <li class="nav-header"> 
-            @if (Auth::check())
-              {{ Auth::user()->name }}
-            @endif
-          </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
-            <i class="nav-icon far fa-circle text-danger"></i>
-            <p>{{ __('Logout') }} </p> 
-          </a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-          </form>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tools"></i>
+              <p>
+                Actions
+                <i class="fad fa-users-class"></i>
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+               <li class="nav-item">
+                {{-- @if (Auth::check())
+                  {{ Auth::user()->name }}
+                @endif --}}
+                <a class="nav-link" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                 <i class="nav-icon fas fa-users-cog text-danger"></i>
+                 <p>{{ __('Logout') }} </p> 
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>

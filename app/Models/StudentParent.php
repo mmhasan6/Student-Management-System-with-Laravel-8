@@ -16,7 +16,17 @@ class StudentParent extends Model
         'phone',
         'password',
         'profile_image',
-        'address'
+        'address',
+        'student_id'
     ];
+    /**
+     * Get all of the child_student for the StudentParent
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function child_student()
+    {
+        return $this->hasMany(Student::class);
+    }
 
 }

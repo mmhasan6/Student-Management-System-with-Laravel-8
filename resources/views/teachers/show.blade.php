@@ -14,6 +14,7 @@
                         </h4>
                     </div>
                     <div class="card-body">
+              @if (!$teachers->isEmpty())
                 <table id="example2" class="table table-striped table-bordered table-hover table-sm">
                   <thead>
                   <tr>
@@ -70,6 +71,9 @@
                   </tr>
                   </tfoot>
                 </table>
+                @else
+                  <h3 style="text-align: center">No data register yet</h3>
+                @endif
               </div>
               <!-- /.card-body -->
                 </div>

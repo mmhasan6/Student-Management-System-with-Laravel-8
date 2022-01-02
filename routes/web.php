@@ -2,16 +2,13 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\CourseSchedule;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\TodosController;
 use App\Http\Controllers\SParentController;
 use App\Http\Controllers\Students\StudentsController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserInfoController;
-use App\Models\Admin;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,11 +35,10 @@ Route::middleware(['auth:admin'])->group(function(){
 
 // Routes for Students parrents image CRUD
 		Route::get('parents', [SParentController::class, 'index'])->name('parents');
-		Route::get('add-parents', [SParentController::class, 'create']);
 		Route::post('add-parents', [SParentController::class,'store'])->name('add-parents');
 		Route::get('edit-parents/{id}', [SParentController::class, 'edit']);
 		Route::put('update-parents/{id}',[SParentController::class, 'update']);
-		Route::get('delete_data/{id}',[SParentController::class, 'destroy']);
+		Route::get('delete_parents_data/{id}',[SParentController::class, 'destroy']);
 
 // Routes for Admin users
 		Route::get('adminUsers', [AdminController::class, 'show'])->name('adminUsers');

@@ -10,6 +10,7 @@
                         </h4>
                     </div>
               <div class="card-body">
+                @if (!$admins->isEmpty())
                 <table id="example2" class="table table-striped table-bordered table-hover table-sm">
                   <thead>
                   <tr>
@@ -29,7 +30,7 @@
                     <tr>
                       <td>{{ $key+1 }}</td>
                       <td>{{ $data->name }}</td>
-                      <td>{{ $data->userName }}</td>
+                      <td>{{ $data->username }}</td>
                       <td>{{ $data->email }}</td>
                       <td>{{ $data->phone }}</td>
                       <td>
@@ -57,6 +58,9 @@
                   </tr>
                   </tfoot>
                 </table>
+                @else
+                <h3 style="text-align: center">No data register yet</h3>
+                 @endif
               </div>
               <!-- /.card-body -->
                 </div>

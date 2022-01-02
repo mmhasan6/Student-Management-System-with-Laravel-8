@@ -8,17 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
+    <meta name="description" content="Student Management">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
     <link rel="shortcut icon" href="favicon.ico"> 
     
-     <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
+	<!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
-    
-    <!-- App CSS -->  
-    <link id="theme-style" rel="stylesheet" href="{{ asset('dist/css/login.css') }}">
+  <!-- App CSS -->  
+  <link id="theme-style" rel="stylesheet" href="{{ asset('dist/css/login.css') }}">
+
 
 </head> 
 
@@ -27,33 +25,46 @@
 	    <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
 		    <div class="d-flex flex-column align-content-end">
 			    <div class="app-auth-body mx-auto">	
-				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="{{ asset('dist/img/app-logo1.svg') }}" alt="logo"></a></div>
+				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon me-2" width="40px" height="40px" src="{{ asset('dist\img\app-logo1.svg') }}" alt="logo"></a></div>
 					<h2 class="auth-heading text-center mb-5">Log in to Portal</h2>
 			        <div class="auth-form-container text-start">
-               @if (Session::has('success'))
-                  <div class="alert alert-success">{{ Session::get('success') }}</div>
-              @endif
-              @if (Session::has('error'))
-                  <div class="alert alert-danger">{{ Session::get('error') }}</div>
-              @endif
-                <form action="{{ route('admin.dologin') }}" method="post" autocomplete="off">
-                    @csrf
-                    <div class="mb-3">
-                      <label for="email" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" value="{{ old('email') }}">
-                      <span class="text-danger">@error('email'){{ $message }}@enderror</span>
-                    </div>
-                    <div class="mb-3">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                      <span class="text-danger">@error('password'){{ $message }}@enderror</span>
-                    </div>
-                    <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
+						@if (Session::has('success'))
+							<div class="alert alert-success">{{ Session::get('success') }}</div>
+						@endif
+						@if (Session::has('error'))
+							<div class="alert alert-danger">{{ Session::get('error') }}</div>
+						@endif
+						<form action="{{ route('admin.dologin') }}" method="post" autocomplete="off">
+							@csrf
+							<div class="email mb-3">
+								<label class="sr-only" for="signin-email">Email</label>
+								<input id="signin-email" name="email" type="email" class="form-control signin-email" placeholder="Email address" required="required" value="{{ old('email') }}">
+								<span class="text-danger">@error('email'){{ $message }}@enderror</span>
+							</div><!--//form-group-->
+							<div class="password mb-3">
+								<label class="sr-only" for="signin-password">Password</label>
+								<input id="signin-password" name="password" type="password" class="form-control signin-password" placeholder="Password" required="required">
+								<span class="text-danger">@error('password'){{ $message }}@enderror</span>
+								<div class="extra mt-3 row justify-content-between">
+									<div class="col-6">
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" value="" id="RememberPassword">
+											<label class="form-check-label" for="RememberPassword">
+											Remember me
+											</label>
+										</div>
+									</div><!--//col-6-->
+									<div class="col-6">
+										<div class="forgot-password text-end">
+											<a href="reset-password.html">Forgot password?</a>
+										</div>
+									</div><!--//col-6-->
+								</div><!--//extra-->
+							</div><!--//form-group-->
+							<div class="text-center">
+								<button type="submit" name="submit_login" class="btn app-btn-primary w-100 theme-btn mx-auto">Log In</button>
+							</div>
+						</form>
 						
 						<div class="auth-option text-center pt-5">No Account? Sign up <a class="text-link" href="signup.html" >here</a>.</div>
 					</div><!--//auth-form-container-->	
@@ -71,7 +82,6 @@
 	    </div><!--//auth-main-col-->
 	    <div class="col-12 col-md-5 col-lg-6 h-100 auth-background-col">
 		    <div class="auth-background-holder">
-          
 		    </div>
 		    <div class="auth-background-mask"></div>
 		    <div class="auth-background-overlay p-3 p-lg-5">

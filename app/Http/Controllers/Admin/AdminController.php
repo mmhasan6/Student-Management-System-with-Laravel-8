@@ -16,11 +16,18 @@ class AdminController extends Controller
     {
         $request->validate([
             'email' => 'required|email|exists:admins,email',
-            'password' => 'required|min:6|max:20',
+            'password' => 'required',
         ],[
             'email.exists' => 'This email is not register into our system.'
         ]);
+
+        $admins = Admin::where('email', '=', $request->email)->first();
+        
         $check = $request->only('email','password');
+        if (! Hash::check($request->password, $admins->password)) {
+            return back()->with('error','Incorrect Password.');
+        }
+        
         if (Auth::guard('admin')->attempt($check)) {
             return redirect()->route('admin.home')->with('success','Welcome to Admin Dashboard.');
         }else{

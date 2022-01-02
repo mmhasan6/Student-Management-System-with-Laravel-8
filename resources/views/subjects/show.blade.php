@@ -16,6 +16,7 @@
                     <div class="card-body">
 
                       {{-- for small table table-sm --}}
+                @if (!$subjects->isEmpty())
                 <table id="datatable" style="text-align: center" class="table table-bordered table-hover table-striped table-responsive-xl table-sm">
                   <thead >
                   <tr>
@@ -56,6 +57,9 @@
                   </tr>
                   </tfoot>
                 </table>
+                @else
+                  <h3 style="text-align: center">No data register yet</h3>
+                @endif
               </div>
               <!-- /.card-body -->
                 </div>

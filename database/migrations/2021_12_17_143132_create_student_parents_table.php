@@ -15,13 +15,16 @@ class CreateStudentParentsTable extends Migration
     {
         Schema::create('student_parents', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('username');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email');
             $table->string('phone');
             $table->string('password');
-            $table->string('profile_image');
+            $table->string('profile_picture');
+            $table->string('gender');
+            $table->date('date_of_birth');
             $table->string('address');
+            $table->foreignId('student_id')->constrained('students');
             $table->timestamps();
         });
     }

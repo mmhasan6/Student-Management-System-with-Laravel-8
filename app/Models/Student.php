@@ -10,14 +10,29 @@ class Student extends Model
     use HasFactory;
     protected $table = 'students';
     protected $fillable = [
-        'name',
-        'rollid',
-        'username',
+        'first_name',
+        'last_name',
+        'roll_id',
         'email',
-        'password',
         'gender',
-        'dob',
+        'date_of_birth',
         'phone',
+        'address',
+        'password',
+        'profile_picture'
     ];
+    /**
+     * Get the parents that owns the Student
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parents()
+    {
+        return $this->belongsTo(StudentParent::class);
+    }
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'courses_students');
+    }
 
 }

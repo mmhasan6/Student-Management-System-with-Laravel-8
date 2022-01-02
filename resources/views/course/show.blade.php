@@ -10,11 +10,12 @@
                         @if (session('status'))
                             <h5 class="alert alert-success">{{ session('status') }}</h5>
                         @endif
-                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#Add_new_course_model"><i class="fas fa-plus"></i> New Course</button>
+                        <button type="button" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#Add_new_course_model"><i class="fas fa-plus"></i> New Course</button>
                         </h4>
                     </div>
                     <div class="card-body">
-                <table id="datatable" class="table table-bordered table-hover table-striped">
+                @if (!$courses->isEmpty())
+                <table id="datatable" class="table table-bordered table-hover table-striped table-sm">
                   <thead>
                   <tr>
                     <th>#</th>
@@ -50,6 +51,9 @@
                   </tr>
                   </tfoot>
                 </table>
+                @else
+                <h3 style="text-align: center">No data yet</h3>
+                 @endif
               </div>
               <!-- /.card-body -->
                 </div>
